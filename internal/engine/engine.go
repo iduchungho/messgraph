@@ -1,11 +1,13 @@
 package engine
 
 import (
+	"log"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/joho/godotenv"
 )
 
 type Engine struct {
@@ -15,6 +17,13 @@ type Engine struct {
 func NewEngine() *Engine {
 	return &Engine{
 		router: fiber.New(),
+	}
+}
+
+func (eng *Engine) Prepare() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
 	}
 }
 
