@@ -1,11 +1,11 @@
 package main
 
 import (
-	"messgraph.com/m/internal/engine"
+	"messgraph.com/m/modules/engine"
 )
 
 func main() {
-	engine := engine.NewEngine()
-	engine.Prepare()
-	engine.Run()
+	app := engine.NewEngine()
+	app.Prepare()
+	app.Run()
 }
