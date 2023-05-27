@@ -1,11 +1,15 @@
 package main
 
 import (
+	"github.com/joho/godotenv"
+	"log"
 	"messgraph.com/m/modules/engine"
 )
 
 func main() {
-	app := engine.NewEngine()
-	app.Prepare()
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	app := engine.New()
 	app.Run()
 }
